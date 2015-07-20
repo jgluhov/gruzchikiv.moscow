@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: playgroundapp
+  api_key: '953226793343973'
+  api_secret: g-T7Q58_W02fzd8zD74njdOtZXU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: playgroundapp
+  api_key: '953226793343973'
+  api_secret: g-T7Q58_W02fzd8zD74njdOtZXU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: playgroundapp
+  api_key: '953226793343973'
+  api_secret: g-T7Q58_W02fzd8zD74njdOtZXU
+  enhance_image_tag: true
+  static_image_support: false

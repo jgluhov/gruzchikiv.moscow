@@ -1,0 +1,9 @@
+.uk-container.uk-container-center
+  .uk-block.tm-block-padding-small
+    = render_breadcrumbs
+  hr
+  .uk-block.tm-block-padding-small
+    .uk-h1 = @thumbnail.title
+    p.uk-text-small = @thumbnail.created_at
+    = image_tag @thumbnail.image.url
+    p = @thumbnail.text

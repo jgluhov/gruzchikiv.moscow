@@ -1,0 +1,34 @@
+.uk-container.uk-container-center
+  .uk-block.tm-block-padding-small
+    .uk-h1 Миниатюры
+    hr
+    = render_breadcrumbs
+    .uk-placeholder
+      = link_to "Создать", new_thumbnail_path
+.uk-container.uk-container-center
+  .uk-block.tm-block-padding-small
+    .uk-overflow-container
+      table.uk-table.uk-table-hover.uk-table-striped
+        caption Колличество: #{@thumbnails.length}
+        thead
+          tr
+            th Заголовок
+            th Текст
+            th Картинка
+            th Действия
+        tbody
+          - for thumbnail in @thumbnails do
+            tr
+              td = link_to thumbnail.title, thumbnail_path(thumbnail)
+              td = truncate(thumbnail.text, :length => 50)
+              td = image_tag thumbnail.image_url, :width => 50, :height => 50
+              td
+                ul.uk-list
+                  li = link_to 'Редактировать', edit_thumbnail_path(thumbnail)
+                  li = link_to 'Удалить', thumbnail_path(thumbnail), method: :delete, data: { confirm: 'Вы уверены ?' }
+        tfoot
+          tr
+            td Заголовок
+            td Текст
+            td Картинка
+            td Действия

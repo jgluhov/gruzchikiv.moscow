@@ -1,0 +1,31 @@
+.uk-width-medium-1-2.uk-container.uk-container-center
+  .uk-block.tm-block-padding-small
+    = render_breadcrumbs
+  hr
+  .uk-block.tm-block-padding-small
+    p.uk-text-small = @thumbnail.created_at
+    = form_for :thumbnail, url: thumbnail_path(@thumbnail), method: :patch, html: { :multipart => true, :class => "uk-form" } do |f|
+
+      - if @thumbnail.errors.any?
+        #error_explanation
+          .uk-alert.uk-alert-large.uk-alert-danger
+            p.uk-text-large
+              = pluralize(@thumbnail.errors.count,'ошибка(ок)')
+            ul
+              - for message in @thumbnail.errors.full_messages do
+                li = message
+
+      fieldset
+        .uk-form-row
+          = image_tag @thumbnail.image.url
+        .uk-form-row
+          = f.text_field :title, { :placeholder => 'Заголовок', :class => 'uk-form-large uk-width-1-1' }
+        .uk-form-row
+          = f.text_area :text, { :placeholder => 'Текст', :class => 'uk-form-large uk-width-1-1', rows: '10', spellcheck: 'false' }
+        .uk-form-row
+          .uk-form-file
+            button.uk-button Выбрать
+            = f.file_field :image
+            span.tm-form-filename.uk-text-muted.uk-margin-left
+        .uk-form-row
+          = f.submit 'Обновить', { :class => 'uk-button uk-button-primary uk-button-large' }
